@@ -15,9 +15,9 @@ istream& operator>>(istream& istr, Student& r) {
 
 ostream& operator<<(ostream& ostr, const Student& r) {
 	ostr << r.StudentFName;
-	std::cout << endl;
+	std::cout << ",";
 	ostr << r.StudentName;
-	std::cout << endl;
+	std::cout << ",";
 	ostr << r.StudentID;
 	std::cout << endl;
 	
@@ -36,9 +36,9 @@ istream& operator>>(istream& istr, Cours& r) {
 
 ostream& operator<<(ostream& ostr, const Cours& r) {
 	ostr << r.CourseID;
-	std::cout << endl;
+	std::cout << ",";
 	ostr << r.CourseCode;
-	std::cout << endl;
+	std::cout << ",";
 	ostr << r.CourseTitle;
 	std::cout << endl;
 
@@ -60,13 +60,12 @@ istream& operator>>(istream& istr, Notes& r) {
 
 ostream& operator<<(ostream& ostr, const Notes& r) {
 	ostr << r.Identifier;
-	std::cout << endl;
+	std::cout << ",";
 	ostr << r.CourseCode;
-	std::cout << endl;
+	std::cout << ",";
 	ostr << r.Note;
-	std::cout << endl;
+	std::cout << ",";
 	ostr << r.StudentID;
 	std::cout << endl;
 	return ostr;
 }
-
