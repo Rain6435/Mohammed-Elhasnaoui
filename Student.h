@@ -18,7 +18,7 @@ public:
     int StudentID;
     string StudentName;
     string StudentFName;
-//Définition du construteur de défaut
+//Définition du construteur par défaut
 public:Student();
 //Définition du constructeur paramètré
 public:Student(int ID, string Name, string FName) {
