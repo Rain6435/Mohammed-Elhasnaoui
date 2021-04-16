@@ -69,14 +69,10 @@ int main()
                         else
                         {
                             cout << "The student doesn't exist.";
-                            break;
+                            
                         }
                     }
-                }/*
-                else {
-                    cout << "Wrong input."<<endl;
-                    continue;
-                }*/
+                }
                 
             
                 if (TarChar == '+') {
@@ -86,7 +82,7 @@ int main()
                         {
                             cout << x << endl;
                             Identifier = x.StudentFName + x.StudentName;
-                            break;
+                            
                         }
                     }
                     cout << "The course ID: "; cin >> CourseID;
@@ -94,11 +90,7 @@ int main()
                     Notes note(Identifier, Note, TarStudent, CourseID);
                     ListOfNotes.push_back(note);
                     break;
-                }/*
-                else
-                {
-                    cout << "Wrong input." << endl;;
-                }*/
+                }
             }
 
         
@@ -118,11 +110,8 @@ int main()
                 ListOfStudents.push_back(student);
                 break;
             }
-            else
-            {
-                cout << "Wrong input." << endl;
-                continue;
-            }
+            
+          
             if (TarChar == 'C') {
                 cout << "Please enter your student ID";
                 cin >> TarStudent;
@@ -138,14 +127,10 @@ int main()
                         cout << x << endl;
                     }
                 } 
-                break;
+               
 
             }
-            else
-            {
-                cout << "Wrong input."<<endl;;
-                continue;
-            }
+           
 
         }  
         
@@ -156,6 +141,7 @@ int main()
         cout << "You have entered the administrator zone. You have all the rights in this software. You can look for students, create students,add notes to students,display all the notes, create courses or display all the courses." << endl;
         cout << "Here are the commands:" << endl << "Student search: STDSRC" << endl << "Student creation: STDCRT" << endl << "Adding notes to student: STDNOT" << endl << "Create course: CRSCRT" << endl << "Display all notes: DSPANT" << endl << "Display all students: DSPSTD" << endl << "Display all courses: DSPCRS" << endl;
         cin >> TarString;
+
         if (TarString == "STDSRC") {
             cout << "Please enter the ID of the student that you are looking for." << endl;
             cin >> TarStudent;
@@ -165,102 +151,73 @@ int main()
                     cout << x;
                 }
             }
-            break;
+            
         }
-        else
-        {
-            cout << "Wrong input.";
-            continue;
-        }
+        
         if (TarString == "STDCRT") {
-            cout << "Enter the student ID"; cin >> ID; cout << endl;
-            cout << "Enter the student's first name"; cin >> Fname; cout << endl;
-            cout << "Enter the student last name"; cin >> Name; cout << endl;
+            cout << "Enter the student ID" << endl; cin >> ID; cout << endl;
+            cout << "Enter the student's first name" << endl; cin >> Fname; cout << endl;
+            cout << "Enter the student last name" << endl; cin >> Name; cout << endl;
             Student student(ID, Fname, Name);
             ListOfStudents.push_back(student);
-            break;
+            
         }
-        else
-        {
-            cout << "Wrong input."<<endl;
-            continue;
-        }
+     
 
         if (TarString == "STDNOT") {
-            cout << "The course ID: "; cin >> CourseID;
-            cout << "Enter the result that you want to put. "; cin >> Note; cout << endl;
+            cout << "The course ID:" << endl; cin >> CourseID;
+            cout << "Enter the result that you want to put." << endl; cin >> Note; cout << endl;
                 Notes note(Identifier, Note, TarStudent, CourseID);
                 cout << note;
                 ListOfNotes.push_back(note);
-                break;
+                
         }
-        else
-        {
-            cout << "Wrong input."<<endl;
-            continue;
-        }
+      
         if (TarString == "CRSCRT") {
              cout << "Enter the course code" << endl; cin >> CourseCode;
              cout << "Enter the course title" << endl; cin >> CourseTitle;
              cout << "Enter the course ID" << endl; cin >> CourseID;
              Cours cours(CourseID, CourseCode, CourseTitle);
              ListOfCourses.push_back(cours);
-             break;
+             
         }
-        else
-        {
-            cout << "Wrong input."<<endl;
-            continue;
-        }
+        
         if (TarString == "DSPANT") {
             for (auto x : ListOfNotes)
             {
                 cout << x << endl;
-            } break;
+            } 
+            cout << "If you want to print the notes of a student, please enter his ID." << endl;
+            cin >> TarStudent;
+            ofstream outfile("Notes.txt");
+
+            for (auto x : ListOfNotes)
+            {
+                if (x.StudentID == TarStudent)
+                {
+                    outfile << x << endl;
+                }
+            }
+            outfile.open("Notes.txt");
+
         }
-        else {
-            cout << "Wrong input."<<endl;
-            continue;
-        }
+        
         if (TarString == "DSPSTD") {
             for (auto x : ListOfStudents)
             {
                 cout << x << endl;
-            } break;
+            } 
         }
-        else
-        {
-            cout << "Wrong input.";
-            continue;
-        }
+       
         if (TarString == "DSPCRS") {
             for (auto x : ListOfCourses)
             {
                 cout << x << endl;
             }
-            break;
-        }
-        else
-        {
-            cout << "Wrong input.";
-            continue;
+        
         }
        }
     }
-
-
-    cout << "If you want to print the notes of a student, please enter his ID." << endl;
-    cin >> TarStudent;
-    ofstream outfile("Notes.txt");
-
-    for (auto x : ListOfNotes)
-    {
-        if (x.StudentID == TarStudent)
-        {
-            outfile << x << endl;
-        }
-    }
-    outfile.open("Notes.txt");
 
     return 0;
     }
