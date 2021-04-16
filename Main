@@ -1,0 +1,109 @@
+#include <string>
+#include <cstdio>
+#include <cstdlib>
+#include <iostream>
+#include <iomanip>
+#include <vector>
+#include <algorithm>
+#include "Student.h"
+#include "Cours.h"
+#include "Notes.h"
+#include <Windows.h>
+
+using namespace std;
+
+
+int main()
+{
+    vector<Student> ListOfStudents;
+
+    //Teachers menu integers(Tar in variables declaration is for traget)
+    int TarStudent;
+    char TarChar;
+
+    int ID;
+    string Name;
+    string Fname;
+
+    string CourseCode;
+    string CourseTitle;
+    int CourseID;
+
+    int Identifier;
+    float Note;
+
+    /*cin >> CourseID;*/
+    /*
+    cin >> CourseCode;
+    cin >> CourseTitle;*/
+
+    /*
+    Cours cours(CourseID, CourseCode, CourseTitle);*/
+
+
+    cout << "Welcome to the primal school management software!/n If you are a teacher, please enter T./n If you are a student and you are willing to register yourself and your courses, please enter S. /n If you are an administrator, please enter A." << endl;
+    cin >> TarChar;
+    TarChar = toupper(TarChar);
+
+    if (TarChar == 'T') {
+        cout << "You have now entered the teacher zone. You do not have all the rights in this software.You can either look for students or add notes to students. If you want to add notes for a student, please press the + button. If you want to search for a student, please press L." << endl;
+        cin >> TarChar;
+        TarChar = toupper(TarChar);
+        if (TarChar == 'L'){
+            cout << "Please enter the ID of the student that you are looking for." << endl;
+            cin >> TarStudent;
+            for (int i = 0; i < sizeof(ListOfStudents)+1; i++) {
+                if (ListOfStudents[i].StudentID == TarStudent)
+                {
+                    cout << ListOfStudents[i];
+                }
+            }
+        }
+        if (TarChar == '+')
+        {
+            cout << "Enter the student's ID"; cin >> ID; cout << endl;
+            cout << "The course ID"; cin>> CourseID
+        }
+    }
+    
+    if (TarChar == 'S')
+    {
+        cout << "You have entered the student zone. You do not have all the rights in this software. If you want to register yourself, please enter R. If you are aleredy a student and you want to see your courses and notes, please enter C." << endl;
+        cin >> TarChar;
+        TarChar = toupper(TarChar);
+        if (TarChar == 'R')
+        {
+            cout << "Enter your ID"; cin >> ID; cout<<endl;
+            cout << "Enter your name"; cin >> Fname; cout << endl;
+            cout << "Enter your last name"; cin >> Name; cout << endl;
+            Student student(ID, Fname, Name);
+            ListOfStudents.push_back(student);
+        }
+        if (TarChar == 'C') {
+            cout << "Please enter your student ID";
+            cin >> TarStudent;
+            for (int i = 0; i < sizeof(ListOfStudents) + 1; i++) {
+                if (ListOfStudents[i].StudentID == TarStudent)
+                {
+                    cout << ListOfStudents[i];
+                }
+            }
+        }
+    }
+
+
+
+    
+    
+   
+    
+    return 0;
+}
+
+Student::Student()
+{
+}
+
+Cours::Cours()
+{
+}
