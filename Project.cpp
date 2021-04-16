@@ -3,6 +3,7 @@
 #include "Notes.h"
 
 
+//Flux d'entrée pour les élèments de types Student
 istream& operator>>(istream& istr, Student& r) {
 	istr >> r.StudentFName;
 	std::cout << endl;
@@ -13,6 +14,7 @@ istream& operator>>(istream& istr, Student& r) {
 	return istr;
 }
 
+//Flux de sortie pour les élèments de types Student
 ostream& operator<<(ostream& ostr, const Student& r) {
 	ostr << r.StudentFName;
 	std::cout << ",";
@@ -24,6 +26,7 @@ ostream& operator<<(ostream& ostr, const Student& r) {
 	return ostr;
 }
 
+//Flux d'entrée pour les élèments de types Cours
 istream& operator>>(istream& istr, Cours& r) {
 	istr >> r.CourseID;
 	std::cout << endl;
@@ -34,6 +37,7 @@ istream& operator>>(istream& istr, Cours& r) {
 	return istr;
 }
 
+//Flux de sortie pour les élèments de types Cours
 ostream& operator<<(ostream& ostr, const Cours& r) {
 	ostr << r.CourseID;
 	std::cout << ",";
@@ -45,7 +49,7 @@ ostream& operator<<(ostream& ostr, const Cours& r) {
 	return ostr;
 }
 
-
+//Flux d'entrée pour les élèments de types Notes
 istream& operator>>(istream& istr, Notes& r) {
 	istr >> r.Identifier;
 	std::cout << endl;
@@ -58,6 +62,7 @@ istream& operator>>(istream& istr, Notes& r) {
 	return istr;
 }
 
+//Flux de sortie pour les élèments de types Notes
 ostream& operator<<(ostream& ostr, const Notes& r) {
 	ostr << r.Identifier;
 	std::cout << ",";
@@ -69,3 +74,4 @@ ostream& operator<<(ostream& ostr, const Notes& r) {
 	std::cout << endl;
 	return ostr;
 }
+
