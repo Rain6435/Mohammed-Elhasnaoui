@@ -182,6 +182,8 @@ int main()
 
                 //Recherche binaire des notes correspondants au ID saisis
                 for (auto x:ListOfNotes) {
+
+                    //Condition d'existence
                     if (x.StudentID == TarStudent)
                     {
                         cout << x << endl;
@@ -214,6 +216,8 @@ int main()
 
             //Recherche binaire de l'étudiant dans la liste d'étudiants
             for (auto x : ListOfStudents) {
+
+                //Condition d'existence
                 if (x.StudentID == TarStudent)
                 {
                     cout << x;
@@ -230,11 +234,15 @@ int main()
             //Commande de saisie 
             cin >> ID; cout << endl;
 
+            //Demande à l'administrateur de saisir le prénom de l'étudiant qu'il souhaite créer
             cout << "Enter the student's first name:" << endl;
+
             //Commande de saisie
             cin >> Fname; cout << endl;
 
+            //Demande à l'administrateur de saisir le nom de famille de l'étudiant qu'il souhaite créer
             cout << "Enter the student last name:" << endl;
+
             //Commande de saisie
             cin >> Name; cout << endl;
 
@@ -248,9 +256,26 @@ int main()
      
 
         if (TarString == "STDNOT") {
-            cout << "The course title:" << endl; cin >> CourseTitle;
-            cout << "The student ID:" << endl; cin >> TarStudent;
-            cout << "Enter the result that you want to put." << endl; cin >> Note; cout << endl;
+
+            //Demande à l'administrateur de saisir le titre du cours auquel ajouter une note
+            cout << "The course title:" << endl;
+            
+            //Commande de saisie 
+            cin >> CourseTitle;
+
+            //Demande à l'administrateur de saisir le numéro de l'étudiant auquel ajouter une note
+            cout << "The student ID:" << endl; 
+
+            //Commande de saisie 
+            cin >> TarStudent;
+
+            //Demande à l'administrateur de saisir la note à ajouter
+            cout << "Enter the result that you want to put." << endl; 
+
+            //Commande de saisie 
+            cin >> Note; cout << endl;
+
+            //Recherche binaire l'étudiant
             for (auto x : ListOfStudents) {
 
                 //Condition d'existance et de création de l'identifiant de l'étudiant
@@ -261,43 +286,96 @@ int main()
 
                 }
             }
+
+            //Création de la note
             Notes note(Identifier, Note, TarStudent, CourseTitle);
+
+            //Affichage de la note
             cout << note << endl;
+
+            //Ajout de la note à la liste de notes
             ListOfNotes.push_back(note);
                 
         }
       
         if (TarString == "CRSCRT") {
 
-             cout << "Enter the course code" << endl; cin >> CourseCode;
-             cout << "Enter the course title" << endl; cin >> CourseTitle;
-             cout << "Enter the course ID" << endl; cin >> CourseID;
+            //Demande à l'administrateur de saisir le numéro de l'étudiant qu'il souhaite créer
+             cout << "Enter the course code" << endl; 
+             
+             //Commande de saisie 
+             cin >> CourseCode;
+
+             //Demande à l'administrateur de saisir le numéro de l'étudiant qu'il souhaite créer
+             cout << "Enter the course title" << endl; 
+             
+             //Commande de saisie 
+             cin >> CourseTitle;
+
+             //Demande à l'administrateur de saisir le numéro de l'étudiant qu'il souhaite créer
+             cout << "Enter the course ID" << endl; 
+             
+             //Commande de saisie 
+             cin >> CourseID;
+
+             //Création du cours
              Cours cours(CourseID, CourseCode, CourseTitle);
+
+             //Ajout du cours à la liste de cours
              ListOfCourses.push_back(cours);
              
         }
         
         if (TarString == "DSPANT") {
+
+            //Affichage de toutes les notes
             for (auto x : ListOfNotes)
             {
                 cout << x << endl;
             } 
+
+            //Demande à l'administrateur de saisir le numéro de l'étudiant duquel il veut afficher toutes les notes
             cout << "If you want to print the notes of a student, please enter his ID." << endl;
+
+            //Commande de saisie
             cin >> TarStudent;
+
+            //Création du fichier texte
             ofstream outfile("Notes.txt");
 
+            //Ouverture du fichier texte
+            outfile.open("Notes.txt");
+
+            //Ajout de toutes les notes au fichier texte
             for (auto x : ListOfNotes)
             {
+                //Définition de l'étudiant à ajouter au fichier
                 if (x.StudentID == TarStudent)
                 {
+                    //Ajout de chaque note de l'étudiant au fichier texte
                     outfile << x << endl;
                 }
             }
-            outfile.open("Notes.txt");
+            //Lecture du fichier
+            ifstream ReadFile("Notes,txt");
 
+            //Création de la string qui va nous permettre d'y stocker le contenu du ficher texte
+            string tp;
+
+            //Boucle pour afficher le fichier ligne par ligne
+            while (getline(ReadFile, tp)) {
+                cout << tp << endl;
+            }
+
+            //Fermeture du fichier
+            outfile.close();
+            ReadFile.close();
+            
         }
         
         if (TarString == "DSPSTD") {
+
+            //Affichage de chaque étudiant
             for (auto x : ListOfStudents)
             {
                 cout << x << endl;
@@ -305,11 +383,12 @@ int main()
         }
        
         if (TarString == "DSPCRS") {
+
+            //Affichage de chaque cours
             for (auto x : ListOfCourses)
             {
                 cout << x << endl;
             }
-        
         }
        }
     }
