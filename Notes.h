@@ -18,14 +18,14 @@ public:
     //Définition des objets de la classe 
     string Identifier;
     float Note;
-    Cours::CourseID;
+    Cours::CourseCode;
     Student::StudentID;
 
  //Définition du constructeur paramètré
-public:Notes(string Ident, float StNotes, int StID, int CrID) {
+public:Notes(string Ident, float StNotes, int StID, string CrID) {
     Identifier = Ident;
     Note = StNotes;
-    CourseID = CrID;
+    CourseCode = CrID;
     StudentID = StID;
 }
 };
