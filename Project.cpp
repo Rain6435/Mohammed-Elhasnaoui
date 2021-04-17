@@ -66,12 +66,16 @@ istream& operator>>(istream& istr, Notes& r) {
 ostream& operator<<(ostream& ostr, const Notes& r) {
 	ostr << r.Identifier;
 	std::cout << ",";
-	ostr << r.CourseCode;
-	std::cout << ",";
 	ostr << r.Note;
 	std::cout << ",";
 	ostr << r.StudentID;
+	std::cout << ",";
+	ostr << r.CourseCode;
 	std::cout << endl;
+	
+	
+	
+	
 	return ostr;
 }
 
